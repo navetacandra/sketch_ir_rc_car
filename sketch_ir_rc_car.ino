@@ -238,9 +238,9 @@ void run_rotate_45_r() {
 
   is_rotate_45_r = true;
   rotate_45_r = millis();
-  // Rotate To Right In 455ms
+  // Rotate To Right In 160ms
   while (is_rotate_45_r) {
-    if (millis() - rotate_45_r < 455) {
+    if (millis() - rotate_45_r < 160) {
       rotate_right();
       delay(10 / 3);
       stop();
@@ -258,9 +258,9 @@ void run_rotate_45_l() {
 
   is_rotate_45_l = true;
   rotate_45_l = millis();
-  // Rotate To Left In 455ms
+  // Rotate To Left In 160ms
   while (is_rotate_45_l) {
-    if (millis() - rotate_45_l < 455) {
+    if (millis() - rotate_45_l < 160) {
       rotate_left();
       delay(10 / 3);
       stop();
@@ -278,9 +278,9 @@ void run_rotate_90_r() {
 
   is_rotate_90_r = true;
   rotate_90_r = millis();
-  // Rotate To Right In 625ms
+  // Rotate To Right In 320ms
   while (is_rotate_90_r) {
-    if (millis() - rotate_90_r < 625) {
+    if (millis() - rotate_90_r < 320) {
       rotate_right();
       delay(10 / 3);
       stop();
@@ -298,9 +298,9 @@ void run_rotate_90_l() {
 
   is_rotate_90_l = true;
   rotate_90_l = millis();
-  // Rotate To Right In 625ms
+  // Rotate To Right In 320ms
   while (is_rotate_90_l) {
-    if (millis() - rotate_90_l < 625) {
+    if (millis() - rotate_90_l < 320) {
       rotate_left();
       delay(10 / 3);
       stop();
@@ -318,9 +318,9 @@ void run_rotate_180_r() {
 
   is_rotate_180_r = true;
   rotate_180_r = millis();
-  // Rotate To Right In 1120ms
+  // Rotate To Right In 740ms
   while (is_rotate_180_r) {
-    if (millis() - rotate_180_r < 1120) {
+    if (millis() - rotate_180_r < 740) {
       rotate_right();
       delay(10 / 3);
       stop();
@@ -338,9 +338,9 @@ void run_rotate_180_l() {
 
   is_rotate_180_l = true;
   rotate_180_l = millis();
-  // Rotate To Left In 1120ms
+  // Rotate To Left In 740ms
   while (is_rotate_180_l) {
-    if (millis() - rotate_180_l < 1120) {
+    if (millis() - rotate_180_l < 740) {
       rotate_left();
       delay(10 / 3);
       stop();
@@ -358,9 +358,9 @@ void run_rotate_360() {
 
   is_rotate_360 = true;
   rotate_360 = millis();
-  // Rotate To Right In 2380ms
+  // Rotate To Right In 1550ms
   while (is_rotate_360) {
-    if (millis() - rotate_360 < 2380) {
+    if (millis() - rotate_360 < 1550) {
       rotate_right();
       delay(10 / 3);
       stop();
