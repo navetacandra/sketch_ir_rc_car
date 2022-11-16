@@ -62,6 +62,7 @@ bool left = false;
 bool grip = false;
 // End Movement Status
 
+// Start setup
 void setup() {
   Serial.begin(9600);     // Start Serial Monitor
   myservo.attach(SERVO);  // Attach To Servo PIN
@@ -88,6 +89,7 @@ void setup() {
   pinMode(IR_R, INPUT);
   // End Declare Input PIN
 }
+// End setup
 
 void loop() {
   smart_car();  // Run smart_car Function
@@ -110,7 +112,7 @@ void loop() {
     if (two) move_left();
   } else stop();
 }
-
+// Start smart_car function
 void smart_car() {
   // Automatically Enter Mode one
   if (!one && !two) one = true;
@@ -203,7 +205,9 @@ void smart_car() {
     left = false;
   }
 }
+// End smart_car function
 
+// Start smart_car_follow_line function
 void smart_car_follow_line() {
   // Get IR Value
   uint8_t IR_R_VAL = digitalRead(IR_R);
@@ -230,6 +234,7 @@ void smart_car_follow_line() {
   // Stop When Left And Right Line Detected
   if (IR_R_VAL == 1 && IR_L_VAL == 1) stop();
 }
+// End smart_car_follow_line function
 
 void run_rotate_45_r() {
   // Declare Needed Variabel
@@ -371,11 +376,54 @@ void run_rotate_360() {
   }
 }
 
+void activate_wheels() {
+  digitalWrite(ENA_R, HIGH);
+  digitalWrite(ENB_R, HIGH);
+  digitalWrite(ENA_L, HIGH);
+  digitalWrite(ENB_L, HIGH);
+}
+
 void stop() {
   digitalWrite(ENA_R, LOW);
   digitalWrite(ENB_R, LOW);
   digitalWrite(ENA_L, LOW);
   digitalWrite(ENB_L, LOW);
+}
+
+void run_right_wheels(int front_wheel, int back_wheel) {
+  if (front_wheel == 1) {
+    digitalWrite(IN1_R, HIGH);
+    digitalWrite(IN2_R, LOW);
+  } else {
+    digitalWrite(IN1_R, LOW);
+    digitalWrite(IN2_R, HIGH);
+  }
+
+  if (back_wheel == 1) {
+    digitalWrite(IN3_R, LOW);
+    digitalWrite(IN4_R, HIGH);
+  } else {
+    digitalWrite(IN3_R, HIGH);
+    digitalWrite(IN4_R, LOW);
+  }
+}
+
+void run_left_wheels(int front_wheel, int back_wheel) {
+  if (front_wheel == 1) {
+    digitalWrite(IN3_L, HIGH);
+    digitalWrite(IN4_L, LOW);
+  } else {
+    digitalWrite(IN3_L, LOW);
+    digitalWrite(IN4_L, HIGH);
+  }
+
+  if (back_wheel == 1) {
+    digitalWrite(IN1_L, LOW);
+    digitalWrite(IN2_L, HIGH);
+  } else {
+    digitalWrite(IN1_L, HIGH);
+    digitalWrite(IN2_L, LOW);
+  }
 }
 
 void move_forward() {
@@ -486,45 +534,3 @@ void rotate_left() {
   }
 }
 
-void activate_wheels() {
-  digitalWrite(ENA_R, HIGH);
-  digitalWrite(ENB_R, HIGH);
-  digitalWrite(ENA_L, HIGH);
-  digitalWrite(ENB_L, HIGH);
-}
-
-void run_right_wheels(int front_wheel, int back_wheel) {
-  if (front_wheel == 1) {
-    digitalWrite(IN1_R, HIGH);
-    digitalWrite(IN2_R, LOW);
-  } else {
-    digitalWrite(IN1_R, LOW);
-    digitalWrite(IN2_R, HIGH);
-  }
-
-  if (back_wheel == 1) {
-    digitalWrite(IN3_R, LOW);
-    digitalWrite(IN4_R, HIGH);
-  } else {
-    digitalWrite(IN3_R, HIGH);
-    digitalWrite(IN4_R, LOW);
-  }
-}
-
-void run_left_wheels(int front_wheel, int back_wheel) {
-  if (front_wheel == 1) {
-    digitalWrite(IN3_L, HIGH);
-    digitalWrite(IN4_L, LOW);
-  } else {
-    digitalWrite(IN3_L, LOW);
-    digitalWrite(IN4_L, HIGH);
-  }
-
-  if (back_wheel == 1) {
-    digitalWrite(IN1_L, LOW);
-    digitalWrite(IN2_L, HIGH);
-  } else {
-    digitalWrite(IN1_L, HIGH);
-    digitalWrite(IN2_L, LOW);
-  }
-}
